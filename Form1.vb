@@ -1,12 +1,18 @@
-﻿Imports System.IO
+﻿#Region "Code"
+Imports System.IO
 Public Class Form1
-
     Private Sub load_card_Click(sender As Object, e As EventArgs) Handles load_card.Click
         If file_open.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim file_find As FileStream = File.OpenRead(file_open.FileName)
             Dim file_read As New BinaryReader(file_find)
             Dim wondercard(&HCC) As Byte
             wondercard = file_read.ReadBytes(&HCC)
+            file_find.Seek(&H60, SeekOrigin.Begin)
+            Dim title_bytes(&H4A) As Byte
+            title_bytes = file_read.ReadBytes(&H4A)
+            Dim title_reader As New System.Text.UnicodeEncoding()
+            Dim card_title As String = title_reader.GetString(title_bytes, 0, &H4A)
+            Me.Text = BitConverter.ToUInt16(wondercard, &HB0) & " - " & card_title
             Dim pokedexnum As UInt16 = BitConverter.ToUInt16(wondercard, &H1A)
             Label1.Text = PokeLib.ReturnName(pokedexnum)
             PictureBox1.Image = PokeLib.ReturnSprite(pokedexnum)
@@ -14,12 +20,22 @@ Public Class Form1
             Label5.Text = PokeLib.ReturnLocation(BitConverter.ToUInt16(wondercard, &H38))
             Label6.Text = PokeLib.ReturnLocation(BitConverter.ToUInt16(wondercard, &H3A))
             Label8.Text = PokeLib.ReturnHometown(wondercard(&H4))
+            Label16.Text = PokeLib.ReturnGender(wondercard(&H35))
+            Label18.Text = PokeLib.ReturnOTGender(wondercard(&H5A))
+            Label21.Text = BitConverter.ToUInt16(wondercard, 0)
+            Label22.Text = BitConverter.ToUInt16(wondercard, 2)
+            If Label21.Text = "0" Then
+                Label21.Text = "0 / Trainer's ID"
+            Else
+                Label21.Text = Label21.Text
+            End If
+            Label24.Text = PokeLib.ReturnCTypeName(wondercard(&HB3))
+            Label24.ForeColor = PokeLib.ReturnCTypeColor(wondercard(&HB3))
             file_read.Close()
             file_find.Close()
         End If
     End Sub
 End Class
-
 Public Class PokeLib
 #Region "Dictionary"
 #Region "Declarations"
@@ -28,6 +44,10 @@ Public Class PokeLib
     Public Shared PicLibrary As New Dictionary(Of UInt16, Image)
     Public Shared bwLocations As New Dictionary(Of UInt16, String)
     Public Shared hometowns As New Dictionary(Of Byte, String)
+    Public Shared genders As New Dictionary(Of Byte, String)
+    Public Shared ot_genders As New Dictionary(Of Byte, String)
+    Public Shared ctype_name As New Dictionary(Of Byte, String)
+    Public Shared ctype_color As New Dictionary(Of Byte, Color)
 #End Region
     Public Shared Sub DicInit()
         If mDicInit Then Exit Sub
@@ -1589,6 +1609,30 @@ Public Class PokeLib
 
         End With
 
+        With genders
+            .Add(0, "Male")
+            .Add(1, "Female")
+            .Add(2, "Random/Genderless")
+        End With
+
+        With ot_genders
+            .Add(0, "Male")
+            .Add(1, "Female")
+            .Add(3, "Recipient's Gender")
+        End With
+
+        With ctype_name
+            .Add(1, "Pokemon")
+            .Add(2, "(Key) Item")
+            .Add(3, "Power")
+        End With
+
+        With ctype_color
+            .Add(1, Color.Blue)
+            .Add(2, Color.DeepPink)
+            .Add(3, Color.Goldenrod)
+        End With
+
         mDicInit = True
     End Sub
 #End Region
@@ -1620,5 +1664,22 @@ Public Class PokeLib
         DicInit()
         Return hometowns(inb)
     End Function
+    Public Shared Function ReturnGender(inb As Byte) As String
+        DicInit()
+        Return genders(inb)
+    End Function
+    Public Shared Function ReturnOTGender(inb As Byte) As String
+        DicInit()
+        Return ot_genders(inb)
+    End Function
+    Public Shared Function ReturnCTypeName(inb As Byte) As String
+        DicInit()
+        Return ctype_name(inb)
+    End Function
+    Public Shared Function ReturnCTypeColor(inb As Byte) As Color
+        DicInit()
+        Return ctype_color(inb)
+    End Function
 #End Region
 End Class
+#End Region
