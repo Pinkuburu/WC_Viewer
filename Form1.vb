@@ -31,6 +31,24 @@ Public Class Form1
             End If
             Label24.Text = PokeLib.ReturnCTypeName(wondercard(&HB3))
             Label24.ForeColor = PokeLib.ReturnCTypeColor(wondercard(&HB3))
+            Dim PID As UInt32 = BitConverter.ToUInt32(wondercard, 8)
+            If PID = 0 Then
+                Label26.Text = "Unset"
+            Else
+                Label26.Text = PID
+            End If
+            Dim ot_reader As New System.Text.UnicodeEncoding()
+            Label27.Text = PokeLib.ReturnIVs(wondercard(&H43))
+            Label28.Text = PokeLib.ReturnIVs(wondercard(&H44))
+            Label29.Text = PokeLib.ReturnIVs(wondercard(&H45))
+            Label30.Text = PokeLib.ReturnIVs(wondercard(&H46))
+            Label31.Text = PokeLib.ReturnIVs(wondercard(&H47))
+            Label32.Text = PokeLib.ReturnIVs(wondercard(&H48))
+            Label34.Text = ot_reader.GetString(wondercard, 0, 16)
+            Label36.Text = wondercard(&H5B)
+            Label37.Text = PokeLib.ReturnIsEgg(wondercard(&H5C))
+            Label39.Text = PokeLib.ReturnAbilityNum(wondercard(&H36))
+
             file_read.Close()
             file_find.Close()
         End If
@@ -48,6 +66,7 @@ Public Class PokeLib
     Public Shared ot_genders As New Dictionary(Of Byte, String)
     Public Shared ctype_name As New Dictionary(Of Byte, String)
     Public Shared ctype_color As New Dictionary(Of Byte, Color)
+    Public Shared ability_num As New Dictionary(Of Byte, String)
 #End Region
     Public Shared Sub DicInit()
         If mDicInit Then Exit Sub
@@ -1633,6 +1652,14 @@ Public Class PokeLib
             .Add(3, Color.Goldenrod)
         End With
 
+        With ability_num
+            .Add(0, "Ability 1")
+            .Add(1, "Ability 2")
+            .Add(2, "Dream World Ability")
+            .Add(3, "Random(1, 2)")
+            .Add(4, "Random(1, 2, DW)")
+        End With
+
         mDicInit = True
     End Sub
 #End Region
@@ -1679,6 +1706,27 @@ Public Class PokeLib
     Public Shared Function ReturnCTypeColor(inb As Byte) As Color
         DicInit()
         Return ctype_color(inb)
+    End Function
+    Public Shared Function ReturnIVs(inb As Byte) As String
+        Dim out As String
+        If inb = &HFF Then
+            out = "Unset"
+        Else
+            out = inb
+        End If
+        Return out
+    End Function
+    Public Shared Function ReturnIsEgg(inb As Byte) As String
+        Dim out As String = "NA"
+        If inb = 0 Then
+            out = "Not Egg"
+        ElseIf inb = 1 Then
+            out = "Is Egg"
+        End If
+        Return out
+    End Function
+    Public Shared Function ReturnAbilityNum(inb As Byte) As String
+        Return ability_num(inb)
     End Function
 #End Region
 End Class
