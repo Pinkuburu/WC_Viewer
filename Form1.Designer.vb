@@ -63,6 +63,15 @@ Partial Class Form1
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
+        Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -73,6 +82,7 @@ Partial Class Form1
         Me.file_open = New System.Windows.Forms.OpenFileDialog()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label48 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -81,6 +91,7 @@ Partial Class Form1
         Me.TabPage5.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.TabPage7.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -122,6 +133,7 @@ Partial Class Form1
         Me.TabControl2.Controls.Add(Me.TabPage5)
         Me.TabControl2.Controls.Add(Me.TabPage4)
         Me.TabControl2.Controls.Add(Me.TabPage3)
+        Me.TabControl2.Controls.Add(Me.TabPage7)
         Me.TabControl2.Location = New System.Drawing.Point(6, 6)
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedIndex = 0
@@ -523,8 +535,107 @@ Partial Class Form1
         Me.Label17.TabIndex = 0
         Me.Label17.Text = "Gender:"
         '
+        'TabPage7
+        '
+        Me.TabPage7.Controls.Add(Me.Label47)
+        Me.TabPage7.Controls.Add(Me.Label46)
+        Me.TabPage7.Controls.Add(Me.Label45)
+        Me.TabPage7.Controls.Add(Me.Label44)
+        Me.TabPage7.Controls.Add(Me.Label43)
+        Me.TabPage7.Controls.Add(Me.Label42)
+        Me.TabPage7.Controls.Add(Me.Label41)
+        Me.TabPage7.Controls.Add(Me.Label40)
+        Me.TabPage7.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage7.Name = "TabPage7"
+        Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage7.Size = New System.Drawing.Size(554, 347)
+        Me.TabPage7.TabIndex = 4
+        Me.TabPage7.Text = "Moves"
+        Me.TabPage7.UseVisualStyleBackColor = True
+        '
+        'Label47
+        '
+        Me.Label47.AutoSize = True
+        Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label47.Location = New System.Drawing.Point(156, 200)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(12, 15)
+        Me.Label47.TabIndex = 7
+        Me.Label47.Text = "-"
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label46.Location = New System.Drawing.Point(156, 158)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(12, 15)
+        Me.Label46.TabIndex = 6
+        Me.Label46.Text = "-"
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Location = New System.Drawing.Point(156, 96)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(12, 15)
+        Me.Label45.TabIndex = 5
+        Me.Label45.Text = "-"
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label44.Location = New System.Drawing.Point(156, 47)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(12, 15)
+        Me.Label44.TabIndex = 4
+        Me.Label44.Text = "-"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label43.Location = New System.Drawing.Point(43, 200)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(62, 16)
+        Me.Label43.TabIndex = 3
+        Me.Label43.Text = "Move 4:"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label42.Location = New System.Drawing.Point(43, 158)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(62, 16)
+        Me.Label42.TabIndex = 2
+        Me.Label42.Text = "Move 3:"
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label41.Location = New System.Drawing.Point(43, 96)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(62, 16)
+        Me.Label41.TabIndex = 1
+        Me.Label41.Text = "Move 2:"
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label40.Location = New System.Drawing.Point(43, 47)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(62, 16)
+        Me.Label40.TabIndex = 0
+        Me.Label40.Text = "Move 1:"
+        '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label48)
         Me.TabPage2.Controls.Add(Me.Label24)
         Me.TabPage2.Controls.Add(Me.Label23)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
@@ -618,6 +729,16 @@ Partial Class Form1
         Me.Label37.TabIndex = 6
         Me.Label37.Text = "Not Egg"
         '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label48.Location = New System.Drawing.Point(45, 76)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(51, 16)
+        Me.Label48.TabIndex = 2
+        Me.Label48.Text = "Status"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -644,6 +765,8 @@ Partial Class Form1
         Me.TabPage4.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        Me.TabPage7.ResumeLayout(False)
+        Me.TabPage7.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -702,5 +825,15 @@ Partial Class Form1
     Friend WithEvents Label37 As System.Windows.Forms.Label
     Friend WithEvents Label39 As System.Windows.Forms.Label
     Friend WithEvents Label38 As System.Windows.Forms.Label
+    Friend WithEvents TabPage7 As System.Windows.Forms.TabPage
+    Friend WithEvents Label47 As System.Windows.Forms.Label
+    Friend WithEvents Label46 As System.Windows.Forms.Label
+    Friend WithEvents Label45 As System.Windows.Forms.Label
+    Friend WithEvents Label44 As System.Windows.Forms.Label
+    Friend WithEvents Label43 As System.Windows.Forms.Label
+    Friend WithEvents Label42 As System.Windows.Forms.Label
+    Friend WithEvents Label41 As System.Windows.Forms.Label
+    Friend WithEvents Label40 As System.Windows.Forms.Label
+    Friend WithEvents Label48 As System.Windows.Forms.Label
 
 End Class
